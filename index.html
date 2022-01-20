@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>对联</title>
+	<script src="/public/jquery.2.0.0.min.js"></script>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="/public/bootstrap.3.4.1.min.css" />
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="/public/bootstrap.3.4.1.min.js"></script>
+
+	<style>
+		#year-word-image {
+			width: fit-content;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="error-msg"></div>
+	<div class="alert alert-warning" role="alert"><b>提示:</b> <i>上下联请用空格隔开</i></div>
+	<div class="input-group">
+      <input type="text" id="year-word" class="form-control" placeholder="人世间纵有百娇千红 唯独你是我情之所钟">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="run">生成</button>
+      </span>
+    </div>
+
+	<div id="year-word-image"></div>
+	<script type="text/javascript">
+		$('#run').click(function () {
+			$('#year-word-image').empty()
+			$('#year-word-image').append(`<img src="/public/load_1.gif" style="width: 300px; margin-top: 80px;">`)
+			let text = $('#year-word').val()
+			if(text == '') {
+				text = '人世间纵有百娇千红 唯独你是我情之所钟'
+			}
+			$.get('fc3b1816f80763b883c5e177d483bc80.php', {text: text}, function(res) {
+				let obj = JSON.parse(res)
+				if(obj.status == '200') {
+					setTimeout(function () {
+						$('#year-word-image').empty()
+						$('#year-word-image').append(`<img style="width: 100%;" src="${obj.image}">`)
+					}, obj.sleep_time)
+				} else {
+					$('#error-msg').append(`<div class="alert alert-danger" role="alert"><b>错误:</b> <i>`+obj.error_msg+`</i></div>`)
+				}
+			})
+		})
+	</script>
+</body>
+</html>
