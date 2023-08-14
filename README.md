@@ -1,5 +1,4 @@
 # new-year-couplet
-### 生成对联图片的Python程序来自[CSDN-天元浪子: 用Python写春联：抒写最真诚的祝福和最美好的祈愿](https://blog.csdn.net/xufive/article/details/104059396?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164241285616780261921494%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=164241285616780261921494&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_yy~default-1-104059396.first_rank_v2_pc_rank_v29&utm_term=%E4%BB%A3%E7%A0%81%E5%86%99%E6%98%A5%E8%81%94&spm=1018.2226.3001.4187)
 
 ## 遇到的问题
 ### 1、PHP 没有 Redis 模块（我用的是 php7.4.26）
